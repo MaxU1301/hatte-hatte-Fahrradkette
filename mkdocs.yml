@@ -1,0 +1,84 @@
+site_name: Hätte, hätte, fahrradkette
+site_description: My personal wiki and knowledge base
+site_author: Max Ullrich
+site_url: https://xn--htte-loa.tothemax.pro
+theme:
+  name: material
+  palette: 
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Dark mode
+      primary: custom
+      accent: indigo
+    
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Light mode
+      primary: custom
+      accent: indigo
+  font:
+    text: Roboto
+    code: Fira Code
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  features:
+    - navigation.footer
+    - navigation.tabs
+    - navigation.instant
+    - navigation.expand
+    - navigation.top
+    - navigation.sections
+    - navigation.tracking
+    - toc.follow
+    - toc.integrate
+    - navigation.indexes
+
+nav:
+  - 🏠 Home: index.md
+  - 📃 Documentation:
+      - documentation/index.md
+      - macOS:
+          - documentation/macOS/mounting volumes.md
+  - Apps That I Use: random pages/Apps-That-I-Use.md
+
+extra:
+  generator: true # Disable the Made with Material for MkDocs footer
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/MaxU1301
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/maximilian-ullrich-389323168/
+
+copyright: Copyright &copy; 2025 Max Ullrich
+
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - admonition
+  - pymdownx.details
+
+plugins:
+  - search
+  - social:
+     cards_layout: default/variant

@@ -1,0 +1,55 @@
+:root  > * {
+  --md-primary-fg-color:        #00A6FF;
+  --md-primary-fg-color--light: #75DFFF;
+  --md-primary-fg-color--dark:  #00A6FF;
+  /* Define RGB components for primary foreground color for use in rgba() */
+  --md-primary-fg-color--rgb: 0, 166, 255; /* RGB for #00A6FF */
+}
+
+
+/* Apply a gradient to the header background */
+.md-header {
+  background: linear-gradient(to right, var(--md-primary-fg-color), var(--md-primary-fg-color--light));
+  /* Apply a subtle tinted shadow for light mode, which is overridden in dark mode */
+  box-shadow: 0 2px 8px rgba(var(--md-primary-fg-color--rgb), 0.2);
+}
+
+/* Make tabs transparent and remove their shadow */
+.md-tabs {
+  background: transparent;
+  box-shadow: none;
+  color: #000000;
+  text-shadow: none;
+}
+
+[data-md-color-scheme="slate"] .md-tabs {
+  background: transparent;
+  box-shadow: none;
+  color: #FFFFFF; /* Ensure text is readable in dark mode */
+}
+
+/* Add a shadow to the tab text for better readability */
+.md-tabs .md-tabs__link {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* In dark mode, remove the shadow from header to replace it with a glow */
+[data-md-color-scheme="slate"] .md-header {
+  /* Remove default theme shadow to replace it with the glow */
+  box-shadow: none;
+}
+
+/* Apply the glow effect to header in dark mode ("slate" scheme) */
+[data-md-color-scheme="slate"] .md-header::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 5px; /* Controls the size of the glow */
+  background: inherit; /* Uses the same gradient as the header */
+  filter: blur(15px) opacity(0.7); /* Creates the soft, glowing effect */
+  z-index: -1; /* Positions the glow behind the page content */
+}
+
+

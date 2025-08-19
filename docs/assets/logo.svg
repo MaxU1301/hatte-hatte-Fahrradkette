@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="256" height="256" viewBox="0 0 2048 2048" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:square;stroke-miterlimit:27;">
+    <g transform="matrix(1,0,0,1,-2342.07,-6682.55)">
+        <g id="B-W---Logo-Small---No-BG" serif:id="B&amp;W - Logo Small - No BG" transform="matrix(1,0,0,1,2342.07,6682.55)">
+            <rect x="0" y="0" width="2048" height="2048" style="fill:none;"/>
+            <clipPath id="_clip1">
+                <rect x="0" y="0" width="2048" height="2048"/>
+            </clipPath>
+            <g clip-path="url(#_clip1)">
+                <g transform="matrix(0.948753,0,0,0.948753,13.5606,71.8368)">
+                    <path d="M1360.3,273.261L526.61,1003.92L1596.08,1003.92L754.333,1746.71L1360.3,273.261Z" style="fill:none;stroke:white;stroke-width:185.24px;"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
