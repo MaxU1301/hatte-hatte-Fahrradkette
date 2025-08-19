@@ -4,8 +4,6 @@ hide:
     - navigation
     - toc
     - footer
-social:
-    cards_layout: default
 ---
 # Test
 
