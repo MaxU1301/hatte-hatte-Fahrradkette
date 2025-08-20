@@ -13,7 +13,6 @@ document$.subscribe(() => {
   const body = document.body;
   const header = document.querySelector(".md-header");
   const hero = document.querySelector(".hero-cover");
-  const tabs = document.querySelector(".md-tabs");
 
   // Reset global state
   header?.classList.remove("md-header--transparent");
@@ -45,11 +44,10 @@ document$.subscribe(() => {
       );
     }
 
-    // Visible when any part of hero is under the header line
-    const heroBottom = hero.getBoundingClientRect().bottom;
-    // Convert the header baseline to viewport coords
-    const headerBaseline = headerH;
-    const overHero = heroBottom > headerBaseline;
+    // Determine the scroll threshold. The header should become opaque when the user
+    // has scrolled past the hero image, minus the height of the header itself.
+    const threshold = hero.offsetHeight - headerH;
+    const overHero = window.scrollY < threshold;
 
     header.classList.toggle(CLS_HEADER_TRANSPARENT, overHero);
     body.classList.toggle(CLS_OVER_HERO, overHero);

@@ -1,7 +1,16 @@
+/*
+  home.css - Final Update
+*/
+
 /* Hero block */
 .hero-cover {
   position: relative;
-  height: var(--hero-height, 100vh);
+  top: calc(-1 * (var(--hero-header-h, 64px) + 3.25rem));
+  margin-bottom: calc(-1 * (var(--hero-header-h, 64px) + 3.25rem));
+
+  /* This is the final change: extend the hero's height to cover the gap */
+  height: calc(var(--hero-height, 100vh) + var(--hero-header-h, 64px) + 3.25rem);
+
   min-height: 60vh;
 
   /* Fixed cover image with overlay */
@@ -105,9 +114,12 @@ html.no-js body:has(.hero-cover) .md-header {
 }
 
 /* 1) Transparent header + white controls only on hero pages */
-body.hero-page .md-header--transparent {
+body.hero-page .md-header--transparent,
+body.hero-page .md-header--transparent .md-header__inner {
   background: transparent !important;
+  background-color: transparent !important;
   box-shadow: none !important;
+  backdrop-filter: none !important;
 }
 
 body.hero-page .md-header--transparent .md-header__title,
@@ -151,20 +163,6 @@ body.hero-page:not(.over-hero) .md-tabs .md-tabs__link {
   text-shadow: none;
 }
 
-/* 3) Avoid content being hidden under fixed tabs after the cover */
-body.hero-page:not(.over-hero) .md-main {
-  padding-top: 3.25rem; /* ≈ tabs height */
-}
-
-/* Ensure absolutely everything in the header is transparent over the hero */
-body.hero-page .md-header--transparent,
-body.hero-page .md-header--transparent .md-header__inner {
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-}
-
 /* Neutralize possible theme overlays/pseudo-elements */
 body.hero-page .md-header--transparent::before,
 body.hero-page .md-header--transparent::after,
@@ -172,30 +170,4 @@ body.hero-page .md-header--transparent .md-header__inner::before,
 body.hero-page .md-header--transparent .md-header__inner::after {
   background: transparent !important;
   box-shadow: none !important;
-}
-
-/* Keep tabs fixed under the header on the homepage, over the cover */
-body.hero-page .md-tabs {
-  position: fixed;
-  top: var(--hero-header-h, 64px);
-  left: 0;
-  right: 0;
-  z-index: 2;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* White tab text while over hero, normal after */
-body.hero-page.over-hero .md-tabs .md-tabs__link {
-  color: #fff !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-}
-body.hero-page:not(.over-hero) .md-tabs .md-tabs__link {
-  color: inherit !important;
-  text-shadow: none;
-}
-
-/* Avoid content jumping under tabs after the cover */
-body.hero-page:not(.over-hero) .md-main {
-  padding-top: 3.25rem;
 }
