@@ -97,3 +97,105 @@
 .md-header {
   transition: background-color 200ms ease, box-shadow 200ms ease;
 }
+
+/* 0) Prevent grey flash before JS runs (Material starts with html.no-js) */
+html.no-js body:has(.hero-cover) .md-header {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* 1) Transparent header + white controls only on hero pages */
+body.hero-page .md-header--transparent {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.hero-page .md-header--transparent .md-header__title,
+body.hero-page .md-header--transparent .md-header__button,
+body.hero-page .md-header--transparent .md-search__input,
+body.hero-page .md-header--transparent .md-search__icon,
+body.hero-page .md-header--transparent .md-tabs__link,
+body.hero-page .md-header--transparent .md-logo {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+body.hero-page .md-header--transparent .md-search__form {
+  border-color: rgba(255, 255, 255, 0.35);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+body.hero-page .md-header--transparent .md-search__input::placeholder {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* 2) Put navigation tabs at the top under header on the homepage */
+body.hero-page .md-tabs {
+  position: fixed;
+  top: var(--hero-header-h, 64px);
+  left: 0;
+  right: 0;
+  z-index: 2; /* header is above, content is below */
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Make tab text readable while over the cover */
+body.hero-page.over-hero .md-tabs .md-tabs__link {
+  color: #fff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* When scrolled past the cover, revert tab appearance */
+body.hero-page:not(.over-hero) .md-tabs .md-tabs__link {
+  color: inherit !important;
+  text-shadow: none;
+}
+
+/* 3) Avoid content being hidden under fixed tabs after the cover */
+body.hero-page:not(.over-hero) .md-main {
+  padding-top: 3.25rem; /* ≈ tabs height */
+}
+
+/* Ensure absolutely everything in the header is transparent over the hero */
+body.hero-page .md-header--transparent,
+body.hero-page .md-header--transparent .md-header__inner {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Neutralize possible theme overlays/pseudo-elements */
+body.hero-page .md-header--transparent::before,
+body.hero-page .md-header--transparent::after,
+body.hero-page .md-header--transparent .md-header__inner::before,
+body.hero-page .md-header--transparent .md-header__inner::after {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Keep tabs fixed under the header on the homepage, over the cover */
+body.hero-page .md-tabs {
+  position: fixed;
+  top: var(--hero-header-h, 64px);
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* White tab text while over hero, normal after */
+body.hero-page.over-hero .md-tabs .md-tabs__link {
+  color: #fff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+body.hero-page:not(.over-hero) .md-tabs .md-tabs__link {
+  color: inherit !important;
+  text-shadow: none;
+}
+
+/* Avoid content jumping under tabs after the cover */
+body.hero-page:not(.over-hero) .md-main {
+  padding-top: 3.25rem;
+}

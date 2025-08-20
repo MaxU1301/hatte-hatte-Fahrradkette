@@ -1,32 +1,78 @@
-/* Toggle a transparent header when the hero is in view.
-   Works with Material's instant loading via document$ */
-let heroObserver;
+/* Make header transparent while hero is under it, with robust scroll/resize.
+   Works with Material's instant loading via document$. */
+
+let cleanupHero;
 
 document$.subscribe(() => {
+  // Clean up prior run (soft navigation)
+  if (typeof cleanupHero === "function") {
+    cleanupHero();
+    cleanupHero = null;
+  }
+
+  const body = document.body;
   const header = document.querySelector(".md-header");
   const hero = document.querySelector(".hero-cover");
+  const tabs = document.querySelector(".md-tabs");
 
-  if (heroObserver) {
-    heroObserver.disconnect();
-    heroObserver = null;
-  }
+  // Reset global state
+  header?.classList.remove("md-header--transparent");
+  body.classList.remove("hero-page", "over-hero");
+  document.documentElement.style.removeProperty("--hero-header-h");
+
   if (!header || !hero) return;
 
-  const cls = "md-header--transparent";
+  const CLS_HEADER_TRANSPARENT = "md-header--transparent";
+  const CLS_HERO_PAGE = "hero-page";
+  const CLS_OVER_HERO = "over-hero";
 
-  heroObserver = new IntersectionObserver(
-    (entries) => {
-      const entry = entries[0];
-      if (entry && entry.isIntersecting) header.classList.add(cls);
-      else header.classList.remove(cls);
-    },
-    {
-      /* Start turning opaque a bit before the header would overlap */
-      root: null,
-      rootMargin: "-64px 0px 0px 0px",
-      threshold: 0,
+  body.classList.add(CLS_HERO_PAGE);
+
+  // Measure and expose header height for CSS positioning of tabs
+  const measure = () => Math.max(48, Math.round(header.offsetHeight || 64));
+  let headerH = measure();
+  document.documentElement.style.setProperty("--hero-header-h", `${headerH}px`);
+
+  // Update transparency based on scroll position
+  const update = () => {
+    // Re-measure in case fonts/layout changed
+    const newH = measure();
+    if (newH !== headerH) {
+      headerH = newH;
+      document.documentElement.style.setProperty(
+        "--hero-header-h",
+        `${headerH}px`
+      );
     }
-  );
 
-  heroObserver.observe(hero);
+    // Visible when any part of hero is under the header line
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    // Convert the header baseline to viewport coords
+    const headerBaseline = headerH;
+    const overHero = heroBottom > headerBaseline;
+
+    header.classList.toggle(CLS_HEADER_TRANSPARENT, overHero);
+    body.classList.toggle(CLS_OVER_HERO, overHero);
+  };
+
+  // Initial state: treat as over-hero to avoid any flash
+  header.classList.add(CLS_HEADER_TRANSPARENT);
+  body.classList.add(CLS_OVER_HERO);
+  // Do a real update on the next frame
+  requestAnimationFrame(update);
+
+  // Wire events
+  const onScroll = () => update();
+  const onResize = () => update();
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onResize);
+
+  cleanupHero = () => {
+    window.removeEventListener("scroll", onScroll);
+    window.removeEventListener("resize", onResize);
+    header.classList.remove(CLS_HEADER_TRANSPARENT);
+    body.classList.remove(CLS_HERO_PAGE, CLS_OVER_HERO);
+    document.documentElement.style.removeProperty("--hero-header-h");
+  };
 });

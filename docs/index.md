@@ -4,6 +4,7 @@ template: home.html
 hide:
   - navigation   # optional: hide left nav on the landing page
   - toc
+  - footer
 hero:
   image: /assets/cover.jpg              # put your image here
   # overlay: "linear-gradient(to top right, rgba(0,0,0,.6), rgba(0,0,0,.1))"
