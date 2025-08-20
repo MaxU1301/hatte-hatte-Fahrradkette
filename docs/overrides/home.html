@@ -28,18 +28,6 @@
         {{ intro_meta.subtitle or config.site_description }}
       </p>
     {% endif %}
-    {% if intro_meta.links %}
-      <div class="hero-cta">
-        {% for link in intro_meta.links %}
-          <a
-            class="md-button{% if link.primary %} md-button--primary{% endif %}"
-            href="{{ link.url | url }}"
-          >
-            {{ link.label }}
-          </a>
-        {% endfor %}
-      </div>
-    {% endif %}
   </div>
 </section>
 {% endblock %}
