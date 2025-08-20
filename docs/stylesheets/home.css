@@ -67,7 +67,8 @@
 
 /* Header transparency while over hero */
 .md-header--transparent {
-  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
   box-shadow: none !important;
 }
 
@@ -104,7 +105,7 @@
 
 /* Optional: adjust your existing header gradient to only apply when not over hero */
 .md-header {
-  transition: background-color 200ms ease, box-shadow 200ms ease;
+  transition: background-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
 }
 
 /* 0) Prevent grey flash before JS runs (Material starts with html.no-js) */

@@ -9,8 +9,8 @@
 
 /* Apply a gradient to the header background */
 .md-header {
-  background: linear-gradient(to right, var(--md-primary-fg-color), var(--md-primary-fg-color--light));
-  /* Apply a subtle tinted shadow for light mode, which is overridden in dark mode */
+  background-color: var(--md-primary-fg-color); /* Base color for the fade */
+  background-image: linear-gradient(to right, var(--md-primary-fg-color), var(--md-primary-fg-color--light)); /* Gradient on top */
   box-shadow: 0 2px 8px rgba(var(--md-primary-fg-color--rgb), 0.2);
 }
 
@@ -53,3 +53,43 @@
 }
 
 
+/* =================================================================== */
+/* Header Fade-in Effect (Corrected)                                   */
+/* =================================================================== */
+
+/* 1. Override the original header background with a solid color that can be faded. */
+.md-header {
+  background: var(--md-primary-fg-color);
+  transition: background-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
+}
+
+/* 2. Create a pseudo-element to hold the gradient. We will fade this layer's opacity. */
+.md-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to right, var(--md-primary-fg-color), var(--md-primary-fg-color--light));
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+  z-index: 0; /* Layer gradient on top of the header's background color */
+}
+
+/* 3. Ensure the header's actual content (title, icons) sits on top of the gradient. */
+.md-header__inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* 4. Define the transparent state for when the header is over the hero image. */
+.md-header--transparent {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* 5. When transparent, fade out the gradient layer. */
+.md-header--transparent::before {
+  opacity: 0 !important;
+}
