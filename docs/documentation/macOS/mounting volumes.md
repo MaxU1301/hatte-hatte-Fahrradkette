@@ -49,7 +49,7 @@ This involves editing two system files. You will need administrator privileges t
 
     Add the following line to the very end of the file. This tells `autofs` to look at our custom SMB map file for instructions.
 
-    ```
+    ```unixconfig title="/etc/auto_master"
     /-    auto_smb    -nosuid,noowners
     ```
 
@@ -67,8 +67,8 @@ This involves editing two system files. You will need administrator privileges t
 
     Here is an example for the two folders we created earlier. **Be sure to replace `your_user`, `DOMAIN`, `username`, and `SERVER` with your actual information.**
 
-    ```
-    # Local Mount Point                           # Mount Options                                 # Remote Share
+    ```{unixconfig title="/etc/auto_smb" .select}
+    # Local Mount Point              # Mount Options                      # Remote Share
     /Users/your_user/Shares/Main     -fstype=smbfs,soft,noowners,nosuid   ://DOMAIN;username@SERVER/Main
     /Users/your_user/Shares/Projects -fstype=smbfs,soft,noowners,nosuid   ://DOMAIN;username@SERVER/Projects
     ```
