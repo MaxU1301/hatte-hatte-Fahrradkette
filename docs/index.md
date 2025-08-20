@@ -12,7 +12,7 @@ hero:
   # position: "center center"
 intro:
   title: Hätte, hätte, fahrradkette    # defaults to site_name if omitted
-  subtitle: My personal wiki and knowledge base
+  subtitle: My personal wiki, knowledge base, and maybe a blog
   links:
     - label: Documentation
       url: documentation/

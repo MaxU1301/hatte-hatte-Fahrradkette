@@ -40,6 +40,7 @@ Here is a comprehensive list of the applications I use on both my Windows and ma
 ### Mac Specific
 
   * **:fontawesome-brands-apple: [Shottr ($)](https://shottr.cc/)**: A powerful and fast screenshot tool for macOS, designed for pixel-perfect captures. It includes advanced features like scrolling screenshots, annotation tools, a screen ruler, color picker, and OCR for text recognition.
+  * **:fontawesome-brands-apple: [BetterDisplay ($)](https://betterdisplay.pro/)**: A powerful display management tool for macOS that gives you full control over your displays, allowing you to manage HiDPI resolutions, control brightness, create virtual screens, and use Picture-in-Picture.
 
 ### Daily Use Tools
 
