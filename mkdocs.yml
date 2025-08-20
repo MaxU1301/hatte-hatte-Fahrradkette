@@ -2,6 +2,8 @@ site_name: Hätte, hätte, fahrradkette
 site_description: My personal wiki and knowledge base
 site_author: Max Ullrich
 site_url: https://xn--htte-loa.tothemax.pro
+repo_url: https://github.com/MaxU1301/hatte-hatte-Fahrradkette
+repo_name: MaxU1301/hatte-hatte-Fahrradkette
 theme:
   name: material
   custom_dir: docs/overrides
@@ -50,7 +52,8 @@ nav:
       - macOS:
           - Mounting Volumes: documentation/macOS/mounting volumes.md
       - Proxmox:
-          - Helpful Commands: documentation/Proxmox/Helpful Commands.md
+          - documentation/Proxmox/index.md
+          - Proxmox Commands: documentation/Proxmox/Helpful Commands.md
       - Git Commands: documentation/Git Hub/Git Commands.md
   - 💻 Apps That I Use: random pages/Apps-That-I-Use.md
 
