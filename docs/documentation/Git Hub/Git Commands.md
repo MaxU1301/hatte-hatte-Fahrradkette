@@ -9,6 +9,6 @@ hide:
 
 ## Remove .DS_Store files from git repo
 
-```bash linenums="1"
+```bash
 find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unmatch
 ```
