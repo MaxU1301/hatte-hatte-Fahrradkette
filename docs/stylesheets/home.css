@@ -1,0 +1,99 @@
+/* Hero block */
+.hero-cover {
+  position: relative;
+  height: var(--hero-height, 100vh);
+  min-height: 60vh;
+
+  /* Fixed cover image with overlay */
+  background-image: var(--hero-overlay), var(--hero-image);
+  background-size: cover, cover;
+  background-repeat: no-repeat;
+  background-position: var(--hero-position), var(--hero-position);
+  background-attachment: fixed; /* Static image effect */
+
+  display: grid;
+  align-items: end;
+  isolation: isolate;
+}
+
+/* Fallback for iOS Safari where background-attachment: fixed is buggy */
+@supports (-webkit-touch-callout: none) {
+  .hero-cover {
+    background-attachment: scroll;
+  }
+}
+
+.hero-cover__inner {
+  position: relative;
+  color: #ffffff;
+  padding: 3rem 1rem;
+
+  /* Constrain to content width */
+  max-width: 60rem;
+  margin-left: max(
+    1rem,
+    calc((100vw - var(--md-content-width, 64rem)) / 2)
+  );
+}
+
+/* Bottom-left placement on wide screens */
+@media (min-width: 76.25rem) {
+  .hero-cover__inner {
+    padding: 4rem 2rem;
+  }
+}
+
+.hero-title {
+  margin: 0 0 0.25rem 0;
+  line-height: 1.1;
+  font-weight: 800;
+  font-size: clamp(2rem, 2.8vw + 1.4rem, 3.5rem);
+}
+
+.hero-subtitle {
+  margin: 0.2rem 0 1.2rem 0;
+  font-size: clamp(1.05rem, 0.7vw + 0.9rem, 1.25rem);
+  opacity: 0.95;
+}
+
+/* Header transparency while over hero */
+.md-header--transparent {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Make header content readable on top of the cover */
+.md-header--transparent .md-header__title,
+.md-header--transparent .md-header__button,
+.md-header--transparent .md-search__input,
+.md-header--transparent .md-search__icon,
+.md-header--transparent .md-tabs__link,
+.md-header--transparent .md-logo {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+/* Search field outline tint on hero */
+.md-header--transparent .md-search__form {
+  border-color: rgba(255, 255, 255, 0.35);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+.md-header--transparent .md-search__input::placeholder {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Ensure tabs don't add a background while over hero */
+.md-header--transparent + .md-tabs {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Respect your dark scheme */
+[data-md-color-scheme="slate"] .hero-cover__inner {
+  color: #fff;
+}
+
+/* Optional: adjust your existing header gradient to only apply when not over hero */
+.md-header {
+  transition: background-color 200ms ease, box-shadow 200ms ease;
+}

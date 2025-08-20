@@ -4,6 +4,7 @@ site_author: Max Ullrich
 site_url: https://xn--htte-loa.tothemax.pro
 theme:
   name: material
+  custom_dir: docs/overrides
   palette: 
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
@@ -58,6 +59,9 @@ copyright: Copyright &copy; 2025 Max Ullrich
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/home.css
+extra_javascript:
+  - javascripts/hero.js          
 
 markdown_extensions:
   - attr_list
