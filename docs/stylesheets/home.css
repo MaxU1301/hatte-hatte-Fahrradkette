@@ -6,7 +6,7 @@
 .hero-cover {
   position: relative;
   top: calc(-1 * (var(--hero-header-h, 64px) + 3.25rem));
-  margin-bottom: calc(-1 * (var(--hero-header-h, 64px) + 3.25rem));
+  margin-bottom: calc(-1 * (var(--hero-header-h, 64px) + 3.25rem*2));
 
   /* This is the final change: extend the hero's height to cover the gap */
   height: calc(var(--hero-height, 100vh) + var(--hero-header-h, 64px) + 3.25rem);
@@ -171,4 +171,100 @@ body.hero-page .md-header--transparent .md-header__inner::before,
 body.hero-page .md-header--transparent .md-header__inner::after {
   background: transparent !important;
   box-shadow: none !important;
+}
+
+/* Fix for white bar at bottom in light mode */
+body.hero-page {
+  background-color: #1e2129; /* Match .about-section background */
+}
+
+/* =================================================================== */
+/* Homepage Content Sections                                           */
+/* =================================================================== */
+
+/* The outer wrapper for a full-width content band. */
+.content-section {
+  /* This combination creates the full-width background effect */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  /* Prevents horizontal scrollbars from appearing */
+  overflow-x: clip; 
+
+  /* Vertical spacing for the section */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* The inner container that realigns content to the site's standard width. */
+.content-section__inner {
+  max-width: var(--md-content-width, 64rem);
+  margin: 0 auto;
+  padding: 0 1.2rem;
+}
+
+/* --- Welcome Section (Always White) --- */
+.welcome-section {
+  background-color: #FFFFFF; /* White background */
+}
+
+.welcome-section, .welcome-section h1 {
+  color: #212529; /* A dark, soft black for text */
+}
+
+.welcome-section a {
+  color: var(--md-primary-fg-color, #00A6FF);
+}
+
+/* --- About Me Section (Always Dark) --- */
+.about-section {
+  background-color: #1E2129; /* Custom dark background */
+}
+
+/* Ensure text and other elements are light and readable */
+.about-section,
+.about-section h1,
+.about-section p,
+.about-section li {
+  color: #eceff1; /* A light, soft white */
+}
+
+/* Override inline styles from the markdown file for better contrast */
+.about-section p[style*="color: #666"] {
+  color: #b0bec5 !important; /* A lighter gray for your subtitle */
+}
+
+.about-section section[style*="border: 1px solid #e0e0e0"] {
+  border-color: #455a64 !important; /* A darker, subtle border for your photo */
+}
+
+.about-section a:not(.social-links a) {
+  color: #82b1ff; /* A readable light blue for inline links */
+}
+
+/* --- Integrated Social Links --- */
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem; /* Space between icons */
+}
+
+.social-links a {
+  color: #b0bec5 !important; /* Sets the default icon color */
+  display: inline-block;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-links a:hover {
+  transform: scale(1.15);
+  color: #ffffff !important; /* Makes the icon brighter on hover */
+}
+
+/* Adjust the size of the embedded SVG icons */
+.social-links a svg {
+  width: 2rem;
+  height: 2rem;
+  display: block; /* Ensures proper alignment */
 }

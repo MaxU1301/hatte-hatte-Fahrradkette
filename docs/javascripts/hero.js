@@ -46,7 +46,7 @@ document$.subscribe(() => {
 
     // Determine the scroll threshold. The header should become opaque when the user
     // has scrolled past the hero image, minus the height of the header itself.
-    const threshold = hero.offsetHeight - headerH;
+    const threshold = hero.offsetHeight - headerH*2.5;
     const overHero = window.scrollY < threshold;
 
     header.classList.toggle(CLS_HEADER_TRANSPARENT, overHero);

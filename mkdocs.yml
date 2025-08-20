@@ -37,13 +37,17 @@ theme:
     - toc.follow
     - toc.integrate
     - navigation.indexes
+    - content.code.copy
+    - content.code.annotate
 
 nav:
   - 🏠 Home: index.md
   - 📃 Documentation:
       - documentation/index.md
       - macOS:
-          - documentation/macOS/mounting volumes.md
+          - Mounting Volumes: documentation/macOS/mounting volumes.md
+      - Proxmox:
+          - Helpful Commands: documentation/Proxmox/Helpful Commands.md
   - Apps That I Use: random pages/Apps-That-I-Use.md
 
 extra:
