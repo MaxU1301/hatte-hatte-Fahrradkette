@@ -48,6 +48,7 @@ nav:
           - Mounting Volumes: documentation/macOS/mounting volumes.md
       - Proxmox:
           - Helpful Commands: documentation/Proxmox/Helpful Commands.md
+      - Git Commands: documentation/Git Hub/Git Commands.md
   - Apps That I Use: random pages/Apps-That-I-Use.md
 
 extra:
