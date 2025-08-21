@@ -66,6 +66,8 @@ Here is a comprehensive list of the applications I use on both my Windows and ma
 
 * :fontawesome-brands-apple: [Boring Notch](https://github.com/TheBoredTeam/boring.notch) [:fontawesome-brands-github:](https://github.com/ItsNikolay/BoringNotch): Style or hide the menu bar/notch for a cleaner, uniform top bar with minimal overhead.
 
+* :fontawesome-brands-apple: [TinkerTool](https://www.bresink.com/osx/TinkerTool.html): Access hidden preference settings in macOS to activate features in the OS and its bundled apps. No admin rights needed.
+
 ### General Utilities
 
 * :fontawesome-brands-windows: :fontawesome-brands-apple: :fontawesome-brands-linux: [Shutter Encoder](https://www.shutterencoder.com/) [:fontawesome-brands-github:](https://github.com/paulpacifico/shutter-encoder): Powerful FFmpeg front-end for video/audio/image conversion, smart cut, rewrap, and subtitling.
@@ -125,6 +127,8 @@ Here is a comprehensive list of the applications I use on both my Windows and ma
 * :fontawesome-brands-windows: :fontawesome-brands-apple: :fontawesome-brands-linux: [MuseScore](https://musescore.org/) [:fontawesome-brands-github:](https://github.com/musescore/MuseScore): Open‑source music notation with playback, engraving, and plugin ecosystem.
 
 * :fontawesome-brands-windows: :fontawesome-brands-apple: :fontawesome-brands-linux: [Siril](https://siril.org/) [:material-git:](https://gitlab.com/free-astro/siril): Open-source astronomical image processing tool for astrophotography, including calibration, stacking, and advanced editing.
+
+* :fontawesome-brands-windows: :fontawesome-brands-apple: :fontawesome-brands-linux: [Upscayl](https://upscayl.org/) [:fontawesome-brands-github:](https://github.com/upscayl/upscayl): Free and open-source AI image upscaler that uses advanced models to enlarge and enhance images.
 
 -----
 
