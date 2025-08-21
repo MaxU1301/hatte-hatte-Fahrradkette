@@ -35,7 +35,7 @@ Initialize a new repository or copy an existing one.
 
 ```bash linenums="1"
 git init                                          # Initialize a new repository in the current directory
-git clone [https://github.com/user/repo.git](https://github.com/user/repo.git)        # Clone an existing repository
+git clone <repo-url>                              # Clone an existing repository
 git clone <repo-url> <directory-name>             # Clone a repository into a specific directory
 ```
 
