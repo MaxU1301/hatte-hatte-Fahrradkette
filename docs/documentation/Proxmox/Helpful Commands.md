@@ -412,6 +412,29 @@ echo -n "$GPU" > /sys/bus/pci/drivers/vfio-pci/bind
 
 ---
 
+## ⚙️ GPU Passthrough Workarounds {#gpu-workarounds}
+
+### Ubuntu/Nvidia `gdm3` Display Fix
+
+When passing an Nvidia GPU through to an Ubuntu VM (Desktop version), the default display manager, **gdm3**, often conflicts with Proxmox's virtual display (SPICE/VNC). This can result in a black screen on the virtual console after the guest drivers are installed, making it difficult to manage the VM without a physical monitor attached to the GPU.
+
+The most reliable solution is to switch the guest VM's display manager from `gdm3` to `lightdm`, which is more compatible with this type of setup. Execute these commands inside the Ubuntu guest VM's terminal.
+
+```bash linenums="1"
+# Update package list and install lightdm
+sudo apt update
+sudo apt install lightdm -y
+
+# If you were not prompted to choose a default display manager during
+# installation, run this command and select lightdm from the menu.
+sudo dpkg-reconfigure lightdm
+
+# Reboot the VM for the change to take full effect.
+sudo reboot
+```
+
+---
+
 ## 🧾 Logs and Troubleshooting {#logs}
 
 System and Proxmox services
