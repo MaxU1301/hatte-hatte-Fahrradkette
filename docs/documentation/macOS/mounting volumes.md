@@ -1,7 +1,14 @@
 ---
 title: Mounting Volumes in MacOS
 hide:
+tags:
+    - macOS
+    - Network
+    - Storage
 ---
+
+# Mounting Volumes in MacOS
+
 ## Auto-Mount Network Shares in macOS Finder with `autofs`
 
 This guide explains how to fix the "The original item can’t be found" error that occurs when you add a network share to your Finder Favorites.

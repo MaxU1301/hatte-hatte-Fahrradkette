@@ -55,8 +55,8 @@ nav:
           - documentation/Proxmox/index.md
           - Proxmox Commands: documentation/Proxmox/Helpful Commands.md
       - Git Commands: documentation/Git Hub/Git Commands.md
-  - 💻 Apps That I Use: random pages/Apps-That-I-Use.md
-
+      - Tags: documentation/tags.md
+  - 💻 Apps: apps/index.md
 extra:
   generator: true # Disable the Made with Material for MkDocs footer
   social:
@@ -109,5 +109,7 @@ markdown_extensions:
 
 plugins:
   - search
+  - tags:
+  - meta:
   # - social:
   #    cards_layout: default/variant
