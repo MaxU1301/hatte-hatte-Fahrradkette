@@ -14,7 +14,7 @@ Here is a comprehensive list of the applications I use on both my Windows and ma
 | :fontawesome-brands-linux: | Linux |
 | **($)** | Paid App |
 
------
+---
 
 ## 🌐 Web
 
@@ -26,7 +26,7 @@ Here is a comprehensive list of the applications I use on both my Windows and ma
 
 * :fontawesome-brands-windows: :fontawesome-brands-apple: :fontawesome-brands-linux: [Mailspring](https://getmailspring.com/) [:fontawesome-brands-github:](https://github.com/Foundry376/Mailspring): A fast, cross‑platform email client with unified inbox, advanced search, and themes. Free plan available; Pro adds read receipts, link tracking, templates, etc. (Pro $8/month).
 
------
+---
 
 ## 🛠️ Utilities
 
@@ -47,6 +47,10 @@ Here is a comprehensive list of the applications I use on both my Windows and ma
 * :fontawesome-brands-windows: [Flow Launcher](https://www.flowlauncher.com/) [:fontawesome-brands-github:](https://github.com/Flow-Launcher/Flow.Launcher): Keyboard-centric launcher for apps, files, web, system commands, and plugins.
 
 ### Mac Specific
+
+* :fontawesome-brands-apple: [IINA](https://iina.io/) [:fontawesome-brands-github:](https://github.com/iina/iina): Modern, open‑source media player for macOS based on mpv with wide codec support, hardware acceleration, subtitles, and a native Mac UI.
+
+* :fontawesome-brands-apple: [itsycal](https://www.mowglii.com/itsycal/): Lightweight menu bar calendar for macOS that integrates with any calendar accounts that Apple Calendar supports and offers a compact month view and event list.
 
 * :fontawesome-brands-apple: [Shottr ($)](https://shottr.cc/): Lightning-fast macOS screenshot tool with scrolling capture, ruler, color picker, OCR, and robust annotation.
 
@@ -69,6 +73,8 @@ Here is a comprehensive list of the applications I use on both my Windows and ma
 * :fontawesome-brands-apple: [TinkerTool](https://www.bresink.com/osx/TinkerTool.html): Access hidden preference settings in macOS to activate features in the OS and its bundled apps. No admin rights needed.
 
 ### General Utilities
+
+* :fontawesome-brands-windows: :fontawesome-brands-apple: :fontawesome-brands-linux: [calibre](https://calibre-ebook.com/) [:fontawesome-brands-github:](https://github.com/kovidgoyal/calibre): Powerful e‑book manager and converter with library organization, device sync, news downloads, and format conversion (EPUB, MOBI, PDF, etc.).
 
 * :fontawesome-brands-windows: :fontawesome-brands-apple: :fontawesome-brands-linux: [Shutter Encoder](https://www.shutterencoder.com/) [:fontawesome-brands-github:](https://github.com/paulpacifico/shutter-encoder): Powerful FFmpeg front-end for video/audio/image conversion, smart cut, rewrap, and subtitling.
 
@@ -106,7 +112,7 @@ Here is a comprehensive list of the applications I use on both my Windows and ma
 
 * :fontawesome-brands-windows: :fontawesome-brands-apple: :fontawesome-brands-linux: [Tabby](https://tabby.sh/) [:fontawesome-brands-github:](https://github.com/Eugeny/tabby): Modern, highly customizable terminal for SSH, serial, and local shells. Tabs, panes, theming, plugins, SSH profiles/agent, Zmodem, and portable config. Cross‑platform builds for Windows, macOS (Intel/Apple Silicon), and Linux.
 
------
+---
 
 ## 🎨 Creative Apps
 
@@ -130,7 +136,7 @@ Here is a comprehensive list of the applications I use on both my Windows and ma
 
 * :fontawesome-brands-windows: :fontawesome-brands-apple: :fontawesome-brands-linux: [Upscayl](https://upscayl.org/) [:fontawesome-brands-github:](https://github.com/upscayl/upscayl): Free and open-source AI image upscaler that uses advanced models to enlarge and enhance images.
 
------
+---
 
 ## 🧩 CAD / 3D Printing
 
@@ -140,4 +146,10 @@ Here is a comprehensive list of the applications I use on both my Windows and ma
 
 * :fontawesome-brands-windows: :fontawesome-brands-apple: :fontawesome-brands-linux: [OrcaSlicer](https://github.com/SoftFever/OrcaSlicer) [:fontawesome-brands-github:](https://github.com/SoftFever/OrcaSlicer): Free, open-source slicer (based on Bambu Studio/SuperSlicer) with strong calibration tools, seam/wall control, and integrations (Klipper, OctoPrint, Obico). Cross‑platform builds for Win/macOS (Intel + Apple Silicon) and Linux.
 
------
+---
+
+## 🎮 Launchers / Games
+
+* :fontawesome-brands-windows: :fontawesome-brands-apple: :fontawesome-brands-linux: [PrismLauncher](https://prismlauncher.org/) [:fontawesome-brands-github:](https://github.com/PrismLauncher/PrismLauncher): Community‑driven Minecraft launcher with instance management, modpack support, per‑instance Java, and portable profiles. Cross‑platform.
+
+---
