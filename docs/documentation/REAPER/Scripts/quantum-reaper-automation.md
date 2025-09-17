@@ -5,16 +5,17 @@ hide:
 
 # Hammerspoon: Quantum & REAPER Automation
 
-This document details the `init.lua` script for Hammerspoon that provides the core automation for the studio workflow. Its primary purpose is to link the power state of the studio peripherals to the operational state of REAPER and the computer itself.
+This is the `init.lua` script for Hammerspoon that provides the core automation for the studio workflow. Its primary purpose is to link the power state of the studio peripherals to the operational state of REAPER and the computer itself.
 
 ## Overview
 
-The script constantly monitors the presence of the **PreSonus Quantum 2626** audio interface. This connection status acts as a trigger for a chain of automated events, simplifying the startup and shutdown procedures of the entire studio.
+The script constantly monitors the presence of the **PreSonus Quantum 2626** audio interface. This connection status acts as a trigger for a chain of events, simplifying the startup and shutdown procedures of the entire audio setup.
 
 ### Core Features
 
-- **Automatic Sleep:** When the Quantum 2626 is disconnected (e.g., by turning off the Furman power conditioner), a configurable countdown begins.
-- **Graceful Exit:** Before sleeping the computer, the script focuses REAPER, saves the current project, and then quits the application.
+- **Automatic Sleep:** When the Quantum 2626 is disconnected (e.g., by turning off the Furman power conditioner), a countdown begins.
+- **Graceful Exit:** Before sleeping the computer, the script focuses REAPER, saves the current project, quits the application, then puts the computer to sleep.
+  - If the Quantum 2626 is turned on before the timer is finished, the countdown stops and everything returns to normal.
 - **User Prompt:** A popup window appears during the countdown, showing the time remaining and allowing the user to either proceed immediately or cancel the shutdown.
 - **Automatic Startup:** Upon waking the computer and detecting the Quantum 2626 has reconnected, the script automatically launches REAPER.
 - **Robustness:** Includes retry logic for launching REAPER on wake and fallback detection to ensure reliability.
@@ -24,7 +25,7 @@ The script constantly monitors the presence of the **PreSonus Quantum 2626** aud
 1.  **Prerequisite:** Ensure [Hammerspoon](https://www.hammerspoon.org/) is installed.
 2.  Navigate to your Hammerspoon configuration directory, which is located at `~/.hammerspoon/`.
 3.  Place the code below into a file named `init.lua` inside this directory. If you already have an `init.lua` file, you will need to merge this script's contents with your existing configuration.
-4.  Open the Hammerspoon application and select "Reload Config" from its menu bar icon to activate the script.
+4.  Select "Reload Config" from hammerspoons menu bar icon to activate the script.
 
 ## Configuration
 

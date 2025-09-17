@@ -5,19 +5,19 @@ hide:
 
 # ReaScript: Big Buttons UI
 
-This document details the "Big Buttons" ReaScript, a custom tool designed to provide a simple, dockable user interface within REAPER for triggering common actions.
+This document details the "Big Buttons" ReaScript, a custom tool designed to provide a simple, dockable user interface within REAPER for triggering actions.
 
 ## Overview
 
-This script uses the **ReaImGui** library to create a window containing large, easy-to-click buttons. It is fully configurable through a built-in settings panel, allowing you to create a custom layout of actions tailored to your workflow, such as refreshing audio and MIDI devices.
+This script uses the **ReaImGui** library to create a window with large, easy-to-click buttons. It is configurable through a built-in settings panel, allowing you to create a custom list of actions buttons, such as refreshing audio and MIDI devices.
 
-This script currently serves as a lightweight and functional UI, with plans to eventually replace it with the more advanced and versatile **[Control-Canvas](https://github.com/MaxU1301/Control-Canvas)** project.
+I am planning to eventually replace it with the more advanced, **[Control-Canvas](https://github.com/MaxU1301/Control-Canvas)** project, but it is still in development.
 
 ### Core Features
 
 - **Dockable Window:** Can be docked in any of REAPER's docker positions.
-- **Fully Configurable:** Add, remove, re-label, and re-colorize buttons from a built-in settings window.
-- **Flexible Actions:** Buttons can trigger any REAPER action using its native number or its named command ID (e.g., `_SWS_ABOUT`).
+- **Configurable:** Add, remove, re-label, and re-colorize buttons from a built-in settings window.
+- **Actions:** Buttons can trigger any REAPER action using its native number or its named command ID (e.g., `_SWS_ABOUT`).
 - **Toggle State Highlighting:** Buttons for toggle actions (like Metronome or Repeat) change color to reflect their on/off state.
 - **External Configuration:** All settings (buttons, sizes, colors) are saved to an external `.cfg` file, making your layout portable and easy to back up.
 
@@ -28,7 +28,7 @@ This script currently serves as a lightweight and functional UI, with plans to e
 1.  **ReaPack:** Must be installed.
 2.  **ReaImGui:** Must be installed via ReaPack.
 
-(See the main [Studio Setup](../current-setup.md) page for instructions on installing these prerequisites).
+(See the main [Current Setup](../current-setup.md) page for instructions on installing these prerequisites).
 
 ### Installation Steps
 
@@ -48,7 +48,7 @@ This script currently serves as a lightweight and functional UI, with plans to e
 
 ## Configuration
 
-All configuration is handled through the script's own graphical interface.
+All configuration is handled through the script's graphical interface.
 
 -   To access the settings, click `Options` > `Settings...` in the menu bar of the "Big Buttons" window.
 -   The script will automatically create a `Big Buttons.cfg` file in the same `Scripts` directory to store your layout and color preferences. You do not need to edit this file manually.

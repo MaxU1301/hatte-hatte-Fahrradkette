@@ -6,7 +6,7 @@ hide:
 
 # 🎹 REAPER Plugins & Resources
 
-A list of my go-to VST plugins for music production in REAPER, along with sample libraries and other key resources.
+A list of my prefered plugins for music production in REAPER, along with sample libraries and other resources.
 
 | Icon | Platform |
 | :--- | :--- |
