@@ -49,11 +49,16 @@ nav:
   - 🏠 Home: index.md
   - 📃 Documentation:
       - documentation/index.md
-      - macOS:
-          - Mounting Volumes: documentation/macOS/mounting volumes.md
       - Proxmox:
           - documentation/Proxmox/index.md
           - Proxmox Commands: documentation/Proxmox/Helpful Commands.md
+      - REAPER:
+          - documentation/REAPER/index.md
+          - Plugins: documentation/REAPER/plugins.md
+          - Current Setup: documentation/REAPER/current-setup.md
+          - Scripts and Automations:
+              - Big Buttons ReaScript: documentation/REAPER/Scripts/big-buttons-reascript.md
+              - Quantum Reaper Automation: documentation/REAPER/Scripts/quantum-reaper-automation.md
       - Git Commands: documentation/Git Hub/Git Commands.md
       - Tags: documentation/tags.md
   - 💻 Apps: apps/index.md

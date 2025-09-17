@@ -70,6 +70,7 @@ Here is a comprehensive list of the applications I use on both my Windows and ma
 * :fontawesome-brands-windows: :fontawesome-brands-apple: :fontawesome-brands-linux: [OpenVPN Connect](https://openvpn.net/client/) [:fontawesome-brands-github:](https://github.com/OpenVPN): Official OpenVPN client for Access Server and community servers; import .ovpn profiles and manage tunnels.
 * :fontawesome-brands-windows: [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html): Classic SSH/Telnet/Serial client and key tools—tiny, dependable, widely compatible.
 * :fontawesome-brands-windows: :fontawesome-brands-apple: :fontawesome-brands-linux: [JDownloader 2](https://jdownloader.org/): Free, cross‑platform download manager with plugins, link decryption, archive auto‑extract, and batch automation.
+* :fontawesome-brands-apple: [ConnectMeNow](https://www.tweaking4all.com/software/macosx-software/connectmenow-v4/): A menu bar utility for macOS to quickly and automatically mount network shares (SMB, AFP, WebDAV, etc.)
 
 ---
 

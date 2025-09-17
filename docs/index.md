@@ -16,7 +16,7 @@ intro:
 <div class="content-section__inner">
 
 <h1>Welcome</h1>
-<p>Just a site that contains things that I want to share. You can look at things like the <a href="/random pages/Apps-That-I-Use/">Apps That I Use</a> or my <a href="/documentation/">Documentation</a>.</p>
+<p>Just a site that contains things that I want to share. You can look at things like the <a href="/apps/">Apps That I Use</a> or my <a href="/documentation/">Documentation</a>.</p>
 
 </div>
 </div>
