@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+
+{# Optional: per-page meta overrides #}
+{% set hero_meta = (page.meta.hero if page and page.meta and page.meta.hero else {}) %}
+{% set intro_meta = (page.meta.intro if page and page.meta and page.meta.intro else {}) %}
+
+{% set hero_image = hero_meta.image or "assets/cover.jpg" %}
+{% set hero_overlay = hero_meta.overlay or "linear-gradient(to top right, rgba(0,0,0,.55), rgba(0,0,0,.15))" %}
+{% set hero_position = hero_meta.position or "center center" %}
+{% set hero_height = hero_meta.height or "100vh" %}
+
+{% block hero %}
+<section
+  class="hero-cover"
+  style="
+    --hero-image: url('{{ hero_image | url }}');
+    --hero-overlay: {{ hero_overlay }};
+    --hero-position: {{ hero_position }};
+    --hero-height: {{ hero_height }};
+  "
+>
+  <div class="hero-cover__inner">
+    <h1 class="hero-title">
+      {{ intro_meta.title or config.site_name }}
+    </h1>
+    {% if intro_meta.subtitle or config.site_description %}
+      <p class="hero-subtitle">
+        {{ intro_meta.subtitle or config.site_description }}
+      </p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
+
+{# Keep your normal page content #}
+{% block content %}
+  {{ super() }}
+{% endblock %}

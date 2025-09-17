@@ -1,0 +1,1646 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="My personal wiki and knowledge base">
+      
+      
+        <meta name="author" content="Max Ullrich">
+      
+      
+        <link rel="canonical" href="https://xn--htte-loa.tothemax.pro/documentation/Proxmox/Helpful%20Commands/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../REAPER/">
+      
+      
+      <link rel="icon" href="../../../assets/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Helpful Proxmox Commands - Hätte, hätte, fahrradkette</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M8.17%202.76A10.1%2010.1%200%200%201%2012%202c1.31%200%202.61.26%203.83.76%201.21.5%202.31%201.24%203.24%202.17s1.67%202.03%202.17%203.24c.5%201.22.76%202.52.76%203.83%200%202.65-1.05%205.2-2.93%207.07A9.97%209.97%200%200%201%2012%2022a10.1%2010.1%200%200%201-3.83-.76%2010%2010%200%200%201-3.24-2.17A9.97%209.97%200%200%201%202%2012c0-2.65%201.05-5.2%202.93-7.07.93-.93%202.03-1.67%203.24-2.17M12%2017l1.56-3.42L17%2012l-3.44-1.56L12%207l-1.57%203.44L7%2012l3.43%201.58z%22/%3E%3C/svg%3E');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/home.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#helpful-proxmox-commands" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Hätte, hätte, fahrradkette" class="md-header__button md-logo" aria-label="Hätte, hätte, fahrradkette" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hätte, hätte, fahrradkette
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Helpful Proxmox Commands
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/MaxU1301/hatte-hatte-Fahrradkette" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MaxU1301/hatte-hatte-Fahrradkette
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  🏠 Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📃 Documentation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../apps/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  💻 Apps
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Hätte, hätte, fahrradkette" class="md-nav__button md-logo" aria-label="Hätte, hätte, fahrradkette" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    Hätte, hätte, fahrradkette
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/MaxU1301/hatte-hatte-Fahrradkette" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MaxU1301/hatte-hatte-Fahrradkette
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🏠 Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    📃 Documentation
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            📃 Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Proxmox
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Proxmox
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Proxmox Commands
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proxmox Commands
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧭 Basics — system and services
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qemu-vms" class="md-nav__link">
+    <span class="md-ellipsis">
+      🖥️ QEMU VMs (qm)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lxc-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      📦 LXC Containers (pct)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backups-restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      💾 Backups and Restore (vzdump, qmrestore, pct restore)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗄️ Storage (pvesm, ZFS, LVM)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#networking-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌐 Networking and Firewall
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cluster-quorum" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 Cluster and Quorum (pvecm, corosync)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ha" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛟 High Availability (ha-manager)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#certs-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔐 Certificates and Web UI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 GPU Passthrough and Reset
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu-workarounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ GPU Passthrough Workarounds
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ GPU Passthrough Workarounds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntunvidia-gdm3-display-fix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ubuntu/Nvidia gdm3 Display Fix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧾 Logs and Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⬆️ Updates and Repositories
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pvesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔌 Proxmox API CLI (pvesh)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../REAPER/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    REAPER
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            REAPER
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../REAPER/plugins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Plugins
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../REAPER/current-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Current Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_4" id="__nav_2_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Scripts and Automations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Scripts and Automations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../REAPER/Scripts/big-buttons-reascript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Big Buttons ReaScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../REAPER/Scripts/quantum-reaper-automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quantum Reaper Automation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Git%20Hub/Git%20Commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git Commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    💻 Apps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="helpful-proxmox-commands">🧰 Helpful Proxmox Commands</h1>
+<p>Battle‑tested CLI commands for administering Proxmox VE: VMs (QEMU), LXC
+containers, storage, networking, cluster, HA, services, backups, GPU
+passthrough/reset, and troubleshooting.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Replace placeholders like <code>&lt;VMID&gt;</code>, <code>&lt;CTID&gt;</code>, <code>&lt;storage&gt;</code>, <code>&lt;node&gt;</code>, <code>&lt;pool&gt;</code>, <code>&lt;iface&gt;</code>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Commands that modify hardware, storage, networking, or cluster state can
+disrupt running workloads. Prefer maintenance windows, backups, and
+snapshots where appropriate. Many operations require root; use sudo or run
+as root on the PVE node.</p>
+</div>
+<hr />
+<h2 id="basics">🧭 Basics — system and services</h2>
+<p>Check versions and node health</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pveversion<span class="w"> </span>-v<span class="w">                        </span><span class="c1"># Proxmox + package versions</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>pvesh<span class="w"> </span>get<span class="w"> </span>/version<span class="w">                   </span><span class="c1"># API version</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>hostnamectl<span class="p">;</span><span class="w"> </span>uptime
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>free<span class="w"> </span>-h
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>df<span class="w"> </span>-h<span class="w"> </span>-x<span class="w"> </span>tmpfs<span class="w"> </span>-x<span class="w"> </span>devtmpfs
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>lsblk<span class="w"> </span>-o<span class="w"> </span>NAME,SIZE,TYPE,FSTYPE,MOUNTPOINT
+</span></code></pre></div></td></tr></table></div>
+<p>Key services and quick restarts</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>systemctl<span class="w"> </span>status<span class="w"> </span>pveproxy<span class="w"> </span>pvedaemon<span class="w"> </span>pvestatd<span class="w"> </span>pve-cluster<span class="w"> </span>corosync<span class="w"> </span>pve-firewall
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>pveproxy<span class="w"> </span>-b<span class="w"> </span>-n<span class="w"> </span><span class="m">200</span><span class="w"> </span>-f
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>pve-cluster<span class="w"> </span>-b<span class="w"> </span>-n<span class="w"> </span><span class="m">200</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>pveproxy<span class="w"> </span>pvedaemon<span class="w">   </span><span class="c1"># Restarts Web UI/daemon</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Stale locks</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>qm<span class="w"> </span>unlock<span class="w"> </span>&lt;VMID&gt;
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>pct<span class="w"> </span>unlock<span class="w"> </span>&lt;CTID&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>Task stream and per-guest logs</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/pve/tasks/active
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/pve/tasks/index
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/pve/qemu-server/&lt;VMID&gt;.log
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/pve/lxc/&lt;CTID&gt;.log
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="qemu-vms">🖥️ QEMU VMs (qm)</h2>
+<p>List, inspect, start/stop</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>qm<span class="w"> </span>list
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>qm<span class="w"> </span>status<span class="w"> </span>&lt;VMID&gt;
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a>qm<span class="w"> </span>config<span class="w"> </span>&lt;VMID&gt;
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a>qm<span class="w"> </span>start<span class="w"> </span>&lt;VMID&gt;
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a>qm<span class="w"> </span>shutdown<span class="w"> </span>&lt;VMID&gt;
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a>qm<span class="w"> </span>stop<span class="w"> </span>&lt;VMID&gt;<span class="w">            </span><span class="c1"># Hard stop</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a>qm<span class="w"> </span>reset<span class="w"> </span>&lt;VMID&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>Console, monitor, send keys</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>qm<span class="w"> </span>terminal<span class="w"> </span>&lt;VMID&gt;<span class="w">        </span><span class="c1"># Serial console (if configured)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>qm<span class="w"> </span>monitor<span class="w"> </span>&lt;VMID&gt;<span class="w">         </span><span class="c1"># QEMU monitor</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>qm<span class="w"> </span>sendkey<span class="w"> </span>&lt;VMID&gt;<span class="w"> </span>ctrl-alt-delete
+</span></code></pre></div></td></tr></table></div>
+<p>Resources and devices</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>qm<span class="w"> </span><span class="nb">set</span><span class="w"> </span>&lt;VMID&gt;<span class="w"> </span>-memory<span class="w"> </span><span class="m">16384</span><span class="w"> </span>-cores<span class="w"> </span><span class="m">8</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>qm<span class="w"> </span><span class="nb">set</span><span class="w"> </span>&lt;VMID&gt;<span class="w"> </span>-agent<span class="w"> </span><span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a>qm<span class="w"> </span><span class="nb">set</span><span class="w"> </span>&lt;VMID&gt;<span class="w"> </span>-net0<span class="w"> </span>virtio,bridge<span class="o">=</span>vmbr0
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a>qm<span class="w"> </span><span class="nb">set</span><span class="w"> </span>&lt;VMID&gt;<span class="w"> </span>-scsi0<span class="w"> </span>&lt;storage&gt;:vm-&lt;VMID&gt;-disk-0
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a>qm<span class="w"> </span>resize<span class="w"> </span>&lt;VMID&gt;<span class="w"> </span>scsi0<span class="w"> </span>+20G
+</span></code></pre></div></td></tr></table></div>
+<p>Snapshots and rollback</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>qm<span class="w"> </span>snapshot<span class="w"> </span>&lt;VMID&gt;<span class="w"> </span>pre-upgrade<span class="w"> </span>--description<span class="w"> </span><span class="s2">&quot;Before upgrade&quot;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>qm<span class="w"> </span>listsnapshot<span class="w"> </span>&lt;VMID&gt;
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>qm<span class="w"> </span>rollback<span class="w"> </span>&lt;VMID&gt;<span class="w"> </span>pre-upgrade
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a>qm<span class="w"> </span>delsnapshot<span class="w"> </span>&lt;VMID&gt;<span class="w"> </span>pre-upgrade
+</span></code></pre></div></td></tr></table></div>
+<p>Import disks and images</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span>
+<span class="normal"><a href="#__codelineno-8-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="c1"># Import disk image into storage, then attach it</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>qm<span class="w"> </span>importdisk<span class="w"> </span>&lt;VMID&gt;<span class="w"> </span>/path/to/image.qcow2<span class="w"> </span>&lt;storage&gt;
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a>qm<span class="w"> </span><span class="nb">set</span><span class="w"> </span>&lt;VMID&gt;<span class="w"> </span>-scsi1<span class="w"> </span>&lt;storage&gt;:vm-&lt;VMID&gt;-disk-1
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="c1"># Optional: convert formats</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a>qemu-img<span class="w"> </span>convert<span class="w"> </span>-p<span class="w"> </span>-O<span class="w"> </span>qcow2<span class="w"> </span>source.vmdk<span class="w"> </span>dest.qcow2
+</span></code></pre></div></td></tr></table></div>
+<p>Live/online migration</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>qm<span class="w"> </span>migrate<span class="w"> </span>&lt;VMID&gt;<span class="w"> </span>&lt;targetnode&gt;<span class="w"> </span>--online
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="c1"># If local disks exist:</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a>qm<span class="w"> </span>migrate<span class="w"> </span>&lt;VMID&gt;<span class="w"> </span>&lt;targetnode&gt;<span class="w"> </span>--online<span class="w"> </span>--with-local-disks
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="lxc-containers">📦 LXC Containers (pct)</h2>
+<p>Basics</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span>
+<span class="normal"><a href="#__codelineno-10-7">7</a></span>
+<span class="normal"><a href="#__codelineno-10-8">8</a></span>
+<span class="normal"><a href="#__codelineno-10-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>pct<span class="w"> </span>list
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>pct<span class="w"> </span>config<span class="w"> </span>&lt;CTID&gt;
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a>pct<span class="w"> </span>start<span class="w"> </span>&lt;CTID&gt;
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a>pct<span class="w"> </span>stop<span class="w"> </span>&lt;CTID&gt;
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a>pct<span class="w"> </span>reboot<span class="w"> </span>&lt;CTID&gt;
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a>pct<span class="w"> </span>console<span class="w"> </span>&lt;CTID&gt;<span class="w">          </span><span class="c1"># Attach console</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a>pct<span class="w"> </span>enter<span class="w"> </span>&lt;CTID&gt;<span class="w">            </span><span class="c1"># Enter shell</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8"></a>pct<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>&lt;CTID&gt;<span class="w"> </span>--<span class="w"> </span>bash<span class="w"> </span>-lc<span class="w"> </span><span class="s2">&quot;apt update &amp;&amp; apt -y upgrade&quot;</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9"></a>pct<span class="w"> </span><span class="nb">set</span><span class="w"> </span>&lt;CTID&gt;<span class="w"> </span>-memory<span class="w"> </span><span class="m">4096</span><span class="w"> </span>-cores<span class="w"> </span><span class="m">2</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Snapshots and restore</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>pct<span class="w"> </span>snapshot<span class="w"> </span>&lt;CTID&gt;<span class="w"> </span>safe-point
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a>pct<span class="w"> </span>listsnapshot<span class="w"> </span>&lt;CTID&gt;
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a>pct<span class="w"> </span>rollback<span class="w"> </span>&lt;CTID&gt;<span class="w"> </span>safe-point
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a>pct<span class="w"> </span>restore<span class="w"> </span>&lt;CTID&gt;<span class="w"> </span>/mnt/pve/&lt;storage&gt;/dump/vzdump-lxc-&lt;CTID&gt;-*.tar.zst<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">  </span>--storage<span class="w"> </span>&lt;storage&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>Migrate</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>pct<span class="w"> </span>migrate<span class="w"> </span>&lt;CTID&gt;<span class="w"> </span>&lt;targetnode&gt;<span class="w"> </span>--online
+</span></code></pre></div></td></tr></table></div>
+<p>Mount/unmount rootfs (offline maintenance)</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>pct<span class="w"> </span>mount<span class="w"> </span>&lt;CTID&gt;
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="c1"># ... operate on /var/lib/lxc/&lt;CTID&gt;/rootfs ...</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a>pct<span class="w"> </span>unmount<span class="w"> </span>&lt;CTID&gt;
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="backups-restore">💾 Backups and Restore (vzdump, qmrestore, pct restore)</h2>
+<p>Create backups</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span>
+<span class="normal"><a href="#__codelineno-14-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="c1"># VM backup</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a>vzdump<span class="w"> </span>&lt;VMID&gt;<span class="w"> </span>--storage<span class="w"> </span>&lt;storage&gt;<span class="w"> </span>--mode<span class="w"> </span>snapshot<span class="w"> </span>--compress<span class="w"> </span>zstd<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">  </span>--notes-template<span class="w"> </span><span class="s2">&quot;{{node}}/{{vmid}} {{guestname}} {{date}}-{{time}}&quot;</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="c1"># Container backup</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a>vzdump<span class="w"> </span>&lt;CTID&gt;<span class="w"> </span>--storage<span class="w"> </span>&lt;storage&gt;<span class="w"> </span>--mode<span class="w"> </span>snapshot<span class="w"> </span>--compress<span class="w"> </span>zstd
+</span></code></pre></div></td></tr></table></div>
+<p>List backup files</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>pvesm<span class="w"> </span>list<span class="w"> </span>&lt;storage&gt;
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a>ls<span class="w"> </span>-lh<span class="w"> </span>/mnt/pve/&lt;storage&gt;/dump
+</span></code></pre></div></td></tr></table></div>
+<p>Restore VM and CT</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span>
+<span class="normal"><a href="#__codelineno-16-4">4</a></span>
+<span class="normal"><a href="#__codelineno-16-5">5</a></span>
+<span class="normal"><a href="#__codelineno-16-6">6</a></span>
+<span class="normal"><a href="#__codelineno-16-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="c1"># Restore VM to new VMID</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a>qmrestore<span class="w"> </span>/mnt/pve/&lt;storage&gt;/dump/vzdump-qemu-&lt;OLD&gt;-*.vma.zst<span class="w"> </span>&lt;NEW_VMID&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="w">  </span>--storage<span class="w"> </span>&lt;storage&gt;
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="c1"># Restore Container</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a>pct<span class="w"> </span>restore<span class="w"> </span>&lt;NEW_CTID&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="w">  </span>/mnt/pve/&lt;storage&gt;/dump/vzdump-lxc-&lt;OLD&gt;-*.tar.zst<span class="w"> </span>--storage<span class="w"> </span>&lt;storage&gt;
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="storage">🗄️ Storage (pvesm, ZFS, LVM)</h2>
+<p>Proxmox storage CLI</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span>
+<span class="normal"><a href="#__codelineno-17-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a>pvesm<span class="w"> </span>status
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a>pvesm<span class="w"> </span>list<span class="w"> </span>&lt;storage&gt;
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a>pvesm<span class="w"> </span>nfsscan<span class="w"> </span>&lt;server&gt;
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4"></a>pvesm<span class="w"> </span>iscsiscan<span class="w"> </span>&lt;server&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>ZFS basics</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span>
+<span class="normal"><a href="#__codelineno-18-3">3</a></span>
+<span class="normal"><a href="#__codelineno-18-4">4</a></span>
+<span class="normal"><a href="#__codelineno-18-5">5</a></span>
+<span class="normal"><a href="#__codelineno-18-6">6</a></span>
+<span class="normal"><a href="#__codelineno-18-7">7</a></span>
+<span class="normal"><a href="#__codelineno-18-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>zpool<span class="w"> </span>status
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a>zpool<span class="w"> </span>list
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a>zfs<span class="w"> </span>list<span class="w"> </span>-o<span class="w"> </span>name,used,avail,mountpoint
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a>zpool<span class="w"> </span>scrub<span class="w"> </span>&lt;pool&gt;
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5"></a>zpool<span class="w"> </span>clear<span class="w"> </span>&lt;pool&gt;
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="c1"># Import/export (maintenance)</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7"></a>zpool<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&lt;pool&gt;
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8"></a>zpool<span class="w"> </span>import<span class="w"> </span>-f<span class="w"> </span>&lt;pool&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>LVM/LVM-thin</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span>
+<span class="normal"><a href="#__codelineno-19-3">3</a></span>
+<span class="normal"><a href="#__codelineno-19-4">4</a></span>
+<span class="normal"><a href="#__codelineno-19-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a>pvs
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a>vgs
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a>lvs<span class="w"> </span>-a<span class="w"> </span>-o<span class="w"> </span>+devices,lv_size,data_percent,metadata_percent
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="c1"># Example: check thin pool usage</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5"></a>lvs<span class="w"> </span>-a<span class="w"> </span>-o<span class="w"> </span>name,vg_name,lv_size,metadata_percent,data_percent
+</span></code></pre></div></td></tr></table></div>
+<p>Replication (built-in)</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
+<span class="normal"><a href="#__codelineno-20-2">2</a></span>
+<span class="normal"><a href="#__codelineno-20-3">3</a></span>
+<span class="normal"><a href="#__codelineno-20-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a>pvesr<span class="w"> </span>status
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a>pvesr<span class="w"> </span>list
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="c1"># Run a job immediately</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4"></a>pvesr<span class="w"> </span>run<span class="w"> </span>--id<span class="w"> </span>&lt;jobid&gt;
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="networking-firewall">🌐 Networking and Firewall</h2>
+<p>Interfaces and bridges</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
+<span class="normal"><a href="#__codelineno-21-2">2</a></span>
+<span class="normal"><a href="#__codelineno-21-3">3</a></span>
+<span class="normal"><a href="#__codelineno-21-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a>ip<span class="w"> </span>-c<span class="w"> </span>a
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a>ip<span class="w"> </span>-c<span class="w"> </span>r
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3"></a>bridge<span class="w"> </span>link<span class="w"> </span>show
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4"></a>grep<span class="w"> </span>-R<span class="w"> </span><span class="s2">&quot;vmbr&quot;</span><span class="w"> </span>/etc/network/interfaces<span class="w"> </span>/etc/network/interfaces.d<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Apply interface changes (ifupdown2)</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span>
+<span class="normal"><a href="#__codelineno-22-2">2</a></span>
+<span class="normal"><a href="#__codelineno-22-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a>ifreload<span class="w"> </span>-a
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2"></a><span class="c1"># Fallback:</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>networking
+</span></code></pre></div></td></tr></table></div>
+<p>Connectivity and ports</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
+<span class="normal"><a href="#__codelineno-23-2">2</a></span>
+<span class="normal"><a href="#__codelineno-23-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a>ss<span class="w"> </span>-tulpn<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;8006|22&quot;</span><span class="w">      </span><span class="c1"># Web UI and SSH</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">3</span><span class="w"> </span>&lt;host-or-ip&gt;
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3"></a>traceroute<span class="w"> </span>&lt;host-or-ip&gt;<span class="w">            </span><span class="c1"># apt install traceroute if missing</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Firewall (PVE 8 uses nftables backend)</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span>
+<span class="normal"><a href="#__codelineno-24-2">2</a></span>
+<span class="normal"><a href="#__codelineno-24-3">3</a></span>
+<span class="normal"><a href="#__codelineno-24-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a>pve-firewall<span class="w"> </span>status
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2"></a>pve-firewall<span class="w"> </span>compile
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3"></a>pve-firewall<span class="w"> </span>reload
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4"></a>nft<span class="w"> </span>list<span class="w"> </span>ruleset<span class="w"> </span><span class="p">|</span><span class="w"> </span>less
+</span></code></pre></div></td></tr></table></div>
+<p>Packet capture (example on vmbr0)</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a>tcpdump<span class="w"> </span>-ni<span class="w"> </span>vmbr0<span class="w"> </span>port<span class="w"> </span><span class="m">8006</span>
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="cluster-quorum">🧩 Cluster and Quorum (pvecm, corosync)</h2>
+<p>Status and nodes</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
+<span class="normal"><a href="#__codelineno-26-2">2</a></span>
+<span class="normal"><a href="#__codelineno-26-3">3</a></span>
+<span class="normal"><a href="#__codelineno-26-4">4</a></span>
+<span class="normal"><a href="#__codelineno-26-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a>pvecm<span class="w"> </span>status
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2"></a>pvecm<span class="w"> </span>nodes
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3"></a>corosync-quorumtool<span class="w"> </span>-s
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4"></a>systemctl<span class="w"> </span>status<span class="w"> </span>corosync<span class="w"> </span>pve-cluster
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>corosync<span class="w"> </span>-b<span class="w"> </span>-n<span class="w"> </span><span class="m">200</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Quorum override for maintenance (use with care)</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span>
+<span class="normal"><a href="#__codelineno-27-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="c1"># Temporarily set expected votes (e.g., in a 1-node surviving scenario)</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2"></a>pvecm<span class="w"> </span>expected<span class="w"> </span><span class="m">1</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Add/remove nodes</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span>
+<span class="normal"><a href="#__codelineno-28-3">3</a></span>
+<span class="normal"><a href="#__codelineno-28-4">4</a></span>
+<span class="normal"><a href="#__codelineno-28-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="c1"># From the new node:</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2"></a>pvecm<span class="w"> </span>add<span class="w"> </span>&lt;IP-of-cluster-node&gt;
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3"></a>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4"></a><span class="c1"># From a healthy cluster node:</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5"></a>pvecm<span class="w"> </span>delnode<span class="w"> </span>&lt;nodename&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>PMXCFS check</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span>
+<span class="normal"><a href="#__codelineno-29-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a>ls<span class="w"> </span>-l<span class="w"> </span>/etc/pve<span class="w">            </span><span class="c1"># FUSE filesystem</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2"></a>getfacl<span class="w"> </span>/etc/pve<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="ha">🛟 High Availability (ha-manager)</h2>
+<p>Status and configuration</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span>
+<span class="normal"><a href="#__codelineno-30-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a>ha-manager<span class="w"> </span>status
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2"></a>ha-manager<span class="w"> </span>config
+</span></code></pre></div></td></tr></table></div>
+<p>Add/remove a VM to HA</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span>
+<span class="normal"><a href="#__codelineno-31-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1"></a>ha-manager<span class="w"> </span>add<span class="w"> </span>vm:&lt;VMID&gt;<span class="w"> </span>--group<span class="w"> </span>default<span class="w"> </span>--state<span class="w"> </span>started
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2"></a>ha-manager<span class="w"> </span>remove<span class="w"> </span>vm:&lt;VMID&gt;
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3"></a>ha-manager<span class="w"> </span><span class="nb">set</span><span class="w"> </span>vm:&lt;VMID&gt;<span class="w"> </span>--state<span class="w"> </span>stopped
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="certs-web">🔐 Certificates and Web UI</h2>
+<p>Renew/recreate local certs and restart UI</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span>
+<span class="normal"><a href="#__codelineno-32-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1"></a>pvecm<span class="w"> </span>updatecerts<span class="w"> </span>-f
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>pveproxy
+</span></code></pre></div></td></tr></table></div>
+<p>Inspect current cert</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1">1</a></span>
+<span class="normal"><a href="#__codelineno-33-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1"></a>openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>/etc/pve/local/pve-ssl.pem<span class="w"> </span>-noout<span class="w"> </span>-subject<span class="w"> </span>-dates
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2"></a>ss<span class="w"> </span>-tnlp<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">8006</span>
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="gpu">🧠 GPU Passthrough and Reset</h2>
+<p>Identify GPU and driver bindings</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1">1</a></span>
+<span class="normal"><a href="#__codelineno-34-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1"></a>lspci<span class="w"> </span>-nnk<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-iEA3<span class="w"> </span><span class="s2">&quot;vga|3d|display|nvidia|amd|intel&quot;</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-iE<span class="w"> </span><span class="s2">&quot;IOMMU|DMAR|VFIO|AMD-Vi&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>List IOMMU groups (useful for isolation)</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-35-1">1</a></span>
+<span class="normal"><a href="#__codelineno-35-2">2</a></span>
+<span class="normal"><a href="#__codelineno-35-3">3</a></span>
+<span class="normal"><a href="#__codelineno-35-4">4</a></span>
+<span class="normal"><a href="#__codelineno-35-5">5</a></span>
+<span class="normal"><a href="#__codelineno-35-6">6</a></span>
+<span class="normal"><a href="#__codelineno-35-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1"></a><span class="k">for</span><span class="w"> </span>g<span class="w"> </span><span class="k">in</span><span class="w"> </span>/sys/kernel/iommu_groups/*<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Group </span><span class="si">${</span><span class="nv">g</span><span class="p">##*/</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span>d<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$g</span><span class="s2">&quot;</span>/devices/*<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4"></a><span class="w">    </span>lspci<span class="w"> </span>-nns<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">d</span><span class="p">##*/</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5"></a><span class="w">  </span><span class="k">done</span>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6"></a><span class="w">  </span><span class="nb">echo</span>
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7"></a><span class="k">done</span>
+</span></code></pre></div></td></tr></table></div>
+<details class="note">
+<summary>Note about escaping colons</summary>
+<p>In normal Linux shells, you do not need to escape colons in sysfs PCI paths (e.g., 0000:c1:00.0). If you prefer, escaping them with backslashes also works, but it is not required.</p>
+</details>
+<p>Quick GPU device reset and PCI rescan</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-1">1</a></span>
+<span class="normal"><a href="#__codelineno-36-2">2</a></span>
+<span class="normal"><a href="#__codelineno-36-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1"></a><span class="c1"># Example device path: /sys/bus/pci/devices/0000:c1:00.0</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2"></a><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/pci/devices/0000:c1:00.0/remove
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3"></a><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/pci/rescan
+</span></code></pre></div></td></tr></table></div>
+<p>Function-level reset (if supported)</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-37-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/pci/devices/0000:01:00.0/reset
+</span></code></pre></div></td></tr></table></div>
+<p>Safer unbind/bind to vfio-pci (host must not use the GPU)</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-38-1">1</a></span>
+<span class="normal"><a href="#__codelineno-38-2">2</a></span>
+<span class="normal"><a href="#__codelineno-38-3">3</a></span>
+<span class="normal"><a href="#__codelineno-38-4">4</a></span>
+<span class="normal"><a href="#__codelineno-38-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1"></a><span class="nv">GPU</span><span class="o">=</span><span class="m">0000</span>:01:00.0
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2"></a><span class="nv">VENDOR_DEVICE</span><span class="o">=</span><span class="k">$(</span>lspci<span class="w"> </span>-nns<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GPU</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="s1">&#39;[][]&#39;</span><span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="k">)</span>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VENDOR_DEVICE</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/pci/drivers/vfio-pci/new_id
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4"></a><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GPU</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/pci/devices/<span class="nv">$GPU</span>/driver/unbind
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5"></a><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GPU</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/pci/drivers/vfio-pci/bind
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="gpu-workarounds">⚙️ GPU Passthrough Workarounds</h2>
+<h3 id="ubuntunvidia-gdm3-display-fix">Ubuntu/Nvidia <code>gdm3</code> Display Fix</h3>
+<p>When passing an Nvidia GPU through to an Ubuntu VM (Desktop version), the default display manager, <strong>gdm3</strong>, often conflicts with Proxmox's virtual display (SPICE/VNC). This can result in a black screen on the virtual console after the guest drivers are installed, making it difficult to manage the VM without a physical monitor attached to the GPU.</p>
+<p>The most reliable solution is to switch the guest VM's display manager from <code>gdm3</code> to <code>lightdm</code>, which is more compatible with this type of setup. Execute these commands inside the Ubuntu guest VM's terminal.</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-39-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-39-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-39-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-39-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-39-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-39-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-39-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-39-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-39-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-39-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="c1"># Update package list and install lightdm</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>lightdm<span class="w"> </span>-y
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4"></a>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5"></a><span class="c1"># If you were not prompted to choose a default display manager during</span>
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6"></a><span class="c1"># installation, run this command and select lightdm from the menu.</span>
+</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7"></a>sudo<span class="w"> </span>dpkg-reconfigure<span class="w"> </span>lightdm
+</span><span id="__span-39-8"><a id="__codelineno-39-8" name="__codelineno-39-8"></a>
+</span><span id="__span-39-9"><a id="__codelineno-39-9" name="__codelineno-39-9"></a><span class="c1"># Reboot the VM for the change to take full effect.</span>
+</span><span id="__span-39-10"><a id="__codelineno-39-10" name="__codelineno-39-10"></a>sudo<span class="w"> </span>reboot
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="logs">🧾 Logs and Troubleshooting</h2>
+<p>System and Proxmox services</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-1">1</a></span>
+<span class="normal"><a href="#__codelineno-40-2">2</a></span>
+<span class="normal"><a href="#__codelineno-40-3">3</a></span>
+<span class="normal"><a href="#__codelineno-40-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1"></a>journalctl<span class="w"> </span>-xe
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2"></a>journalctl<span class="w"> </span>-b<span class="w"> </span>-u<span class="w"> </span>pveproxy<span class="w"> </span>-u<span class="w"> </span>pvedaemon<span class="w"> </span>-u<span class="w"> </span>pvestatd<span class="w"> </span>-u<span class="w"> </span>pve-cluster<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3"></a><span class="w">  </span>-u<span class="w"> </span>corosync<span class="w"> </span>-u<span class="w"> </span>pve-firewall<span class="w"> </span>--no-pager<span class="w"> </span><span class="p">|</span><span class="w"> </span>less
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4"></a>dmesg<span class="w"> </span>-T<span class="w"> </span><span class="p">|</span><span class="w"> </span>less
+</span></code></pre></div></td></tr></table></div>
+<p>Guest-specific logs</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-41-1">1</a></span>
+<span class="normal"><a href="#__codelineno-41-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1"></a>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/pve/qemu-server/&lt;VMID&gt;.log
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2"></a>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/pve/lxc/&lt;CTID&gt;.log
+</span></code></pre></div></td></tr></table></div>
+<p>Network diagnostics</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-1">1</a></span>
+<span class="normal"><a href="#__codelineno-42-2">2</a></span>
+<span class="normal"><a href="#__codelineno-42-3">3</a></span>
+<span class="normal"><a href="#__codelineno-42-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1"></a>ip<span class="w"> </span>-c<span class="w"> </span>a
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2"></a>ip<span class="w"> </span>-c<span class="w"> </span>r
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3"></a>nft<span class="w"> </span>list<span class="w"> </span>ruleset<span class="w"> </span><span class="p">|</span><span class="w"> </span>less
+</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4"></a>tcpdump<span class="w"> </span>-ni<span class="w"> </span>&lt;iface&gt;<span class="w"> </span>host<span class="w"> </span>&lt;ip-or-host&gt;<span class="w"> </span>and<span class="w"> </span>port<span class="w"> </span>&lt;port&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>Stuck tasks and locks</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-43-1">1</a></span>
+<span class="normal"><a href="#__codelineno-43-2">2</a></span>
+<span class="normal"><a href="#__codelineno-43-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1"></a>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;qm .*&lt;VMID&gt;|vzdump|lxc&quot;</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2"></a>qm<span class="w"> </span>unlock<span class="w"> </span>&lt;VMID&gt;
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3"></a>pct<span class="w"> </span>unlock<span class="w"> </span>&lt;CTID&gt;
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="updates">⬆️ Updates and Repositories</h2>
+<p>Check repos</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-44-1">1</a></span>
+<span class="normal"><a href="#__codelineno-44-2">2</a></span>
+<span class="normal"><a href="#__codelineno-44-3">3</a></span>
+<span class="normal"><a href="#__codelineno-44-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1"></a>cat<span class="w"> </span>/etc/apt/sources.list
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2"></a>ls<span class="w"> </span>-1<span class="w"> </span>/etc/apt/sources.list.d/
+</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3"></a>cat<span class="w"> </span>/etc/apt/sources.list.d/pve-enterprise.list<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+</span><span id="__span-44-4"><a id="__codelineno-44-4" name="__codelineno-44-4"></a>cat<span class="w"> </span>/etc/apt/sources.list.d/pve-no-subscription.list<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Update safely</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-45-1">1</a></span>
+<span class="normal"><a href="#__codelineno-45-2">2</a></span>
+<span class="normal"><a href="#__codelineno-45-3">3</a></span>
+<span class="normal"><a href="#__codelineno-45-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1"></a>apt<span class="w"> </span>update
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2"></a>apt<span class="w"> </span>full-upgrade
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3"></a>pveversion<span class="w"> </span>-v
+</span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4"></a>reboot
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="pvesh">🔌 Proxmox API CLI (pvesh)</h2>
+<p>Quick queries</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-46-1">1</a></span>
+<span class="normal"><a href="#__codelineno-46-2">2</a></span>
+<span class="normal"><a href="#__codelineno-46-3">3</a></span>
+<span class="normal"><a href="#__codelineno-46-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1"></a>pvesh<span class="w"> </span>get<span class="w"> </span>/cluster/resources
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2"></a>pvesh<span class="w"> </span>get<span class="w"> </span>/nodes
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3"></a>pvesh<span class="w"> </span>get<span class="w"> </span>/nodes/<span class="k">$(</span>hostname<span class="k">)</span>/qemu
+</span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4"></a>pvesh<span class="w"> </span>get<span class="w"> </span>/nodes/<span class="k">$(</span>hostname<span class="k">)</span>/lxc
+</span></code></pre></div></td></tr></table></div>
+<p>Example: get a VM’s status via API</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-47-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1"></a>pvesh<span class="w"> </span>get<span class="w"> </span>/nodes/<span class="k">$(</span>hostname<span class="k">)</span>/qemu/&lt;VMID&gt;/status/current
+</span></code></pre></div></td></tr></table></div>
+<hr />
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction to Proxmox VE">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Introduction to Proxmox VE
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../REAPER/" class="md-footer__link md-footer__link--next" aria-label="Next: 🎹 REAPER: An Overview">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                🎹 REAPER: An Overview
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Max Ullrich
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/MaxU1301" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/maximilian-ullrich-389323168/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.instant", "navigation.expand", "navigation.top", "navigation.sections", "navigation.tracking", "toc.follow", "toc.integrate", "navigation.indexes", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../../javascripts/hero.js"></script>
+      
+    
+  </body>
+</html>
